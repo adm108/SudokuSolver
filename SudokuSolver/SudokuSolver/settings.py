@@ -69,7 +69,7 @@ ROOT_URLCONF = "SudokuSolver.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -141,6 +141,14 @@ SITE_ID = 1
 ACCOUNT_EMAIL_VERYFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = (True)
 
+# urls endpoints with login and logout scenarious
 LOGIN_URL = 'accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    )
+}
