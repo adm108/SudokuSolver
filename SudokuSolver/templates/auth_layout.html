@@ -1,27 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>Sudoku Solver</title>
-    <style>
-        .login-form-container {
-            width: 300px;
-            margin: auto;
-        }
-        
-        .registration-form-container {
-            width: 400px;
-            margin: auto;
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
+{% block style %}
+<style>
+    html, body {
+        height: 100%;
+        font-family: 'Fredoka One', sans-serif;
+        font-weight: normal;
+    }
+
+    .auth-box {
+        border: 3px solid lightgray;
+        border-radius: 10px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        width: 600px;
+        margin: auto;
+    }
+
+    .login-form-container {
+        width: 300px;
+        margin: auto;
+    }
+    .registration-form-container {
+        width: 400px;
+        margin: auto;
+    }
+    .outer-area {
+        margin-top: 100px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="outer-area">
     <div class="auth-box text-center">
-        {% block content %}
+        {% block auth %}
         {% endblock %}
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
