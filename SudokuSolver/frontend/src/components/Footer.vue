@@ -12,7 +12,10 @@
       </a>
     </div>
     <div class="footer2">
-      <h6>&copy; 2020. All rights reserved. Created by Adam Rogacewicz.</h6>
+      <h6>
+        &copy; {{ new Date().getFullYear() }}. All rights reserved. Created by
+        Adam Rogacewicz.
+      </h6>
     </div>
   </footer>
 </template>
@@ -24,6 +27,9 @@ export default {
 </script>
 
 <style scoped>
+footer {
+  margin-top: auto;
+}
 .footer1 {
   width: 100%;
   height: 57px;
