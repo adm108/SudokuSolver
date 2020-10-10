@@ -933,7 +933,8 @@ export default {
       case87: "",
       case88: "",
       sudokuExample: [],
-      sudokuTable: []
+      sudokuTable: [],
+      errorInSudokuTable: false
     };
   },
   methods: {
@@ -943,32 +944,31 @@ export default {
         this.sudokuExample.push(...data.results);
       });
     },
-    clear() {
-      // const listOfInputs = document.querySelectorAll("input");
-      // for (const input of listOfInputs) {
-      //   input.value = "";
-      //   input.classList.remove("invalid");
-      // }
-      // this.sudokuTable = [];
-      location.reload();
+    makeErrorSquare(line, column) {
+      const input = document.getElementById("case" + line + column);
+      input.classList.add("invalid");
+      // remove css class when user put some new value (only once - "once" parameter)
+      input.addEventListener(
+        "input",
+        () => {
+          input.classList.remove("invalid");
+        },
+        { once: true }
+      );
     },
-    verify() {
+    checkNumbers() {
       const listOfInput = document.querySelectorAll("input");
-      this.sudokuTable = [];
-      // every pushing button will reset all css classes
       for (const input of listOfInput) {
         input.classList.remove("invalid");
       }
-
-      // is all numers are between 1 and 9?
       for (const input of listOfInput) {
         const validateInput = input.checkValidity();
         if (validateInput === false) {
-          return;
+          console.log("wrong value in the sudoku table!");
         }
       }
-      // making list of 9 lists with sudoku numbers
-      // const sudoku = [];
+    },
+    makeSudokuTable() {
       for (let line = 0; line < 9; line += 1) {
         const sudokuLine = [];
         for (let column = 0; column < 9; column += 1) {
@@ -980,64 +980,44 @@ export default {
         }
         this.sudokuTable.push(sudokuLine);
       }
-      // console.log(sudoku);
-      // is there any duplicates in the lines - horizontal?
+    },
+    checkHorizontal() {
       for (let line = 0; line < 9; line += 1) {
         const list = new Set();
         for (let column = 0; column < 9; column += 1) {
           const value = this.sudokuTable[line][column];
-          if (value === "") {
-            // console.log("lol");
-          } else {
+          if (value !== "") {
             const valueExists = list.has(value);
-            // if value exists in the list -> make red square !
+            // if value exists in the list -> make red square
             if (valueExists) {
               console.log("Error - double " + line + "-" + column);
-              const input = document.getElementById("case" + line + column);
-              input.classList.add("invalid");
-              // remove css class when user put some new walu (only once - "once" parameter)
-              input.addEventListener(
-                "input",
-                () => {
-                  input.classList.remove("invalid");
-                },
-                { once: true }
-              );
+              this.makeErrorSquare(line, column);
             } else {
               list.add(value);
             }
           }
         }
       }
-      // is there any duplicates in the lines - vertical?
+    },
+    checkVertical() {
       for (let column = 0; column < 9; column += 1) {
         const list = new Set();
         for (let line = 0; line < 9; line += 1) {
           const value = this.sudokuTable[line][column];
-          if (value === "") {
-            // console.log("lol");
-          } else {
+          if (value !== "") {
             const valueExists = list.has(value);
-            // if value exists in the list -> make red square !
+            // if value exists in the list -> make red square
             if (valueExists) {
               console.log("Error - double " + line + "-" + column);
-              const input = document.getElementById("case" + line + column);
-              input.classList.add("invalid");
-              // remove css class when user put some new walu (only once - "once" parameter)
-              input.addEventListener(
-                "input",
-                () => {
-                  input.classList.remove("invalid");
-                },
-                { once: true }
-              );
+              this.makeErrorSquare(line, column);
             } else {
               list.add(value);
             }
           }
         }
       }
-      // checking squares
+    },
+    checkSquares() {
       const squares = [
         [
           [0, 0],
@@ -1145,23 +1125,12 @@ export default {
           const line = element[0];
           const column = element[1];
           const value = this.sudokuTable[line][column];
-          if (value === "") {
-            // console.log("lol");
-          } else {
+          if (value !== "") {
             const valueExists = list.has(value);
-            // if value exists in the list -> make red square !
+            // if value exists in the list -> make red square
             if (valueExists) {
               console.log("Error - double " + line + "-" + column);
-              const input = document.getElementById("case" + line + column);
-              input.classList.add("invalid");
-              // remove css class when user put some new value (only once - "once" parameter)
-              input.addEventListener(
-                "input",
-                () => {
-                  input.classList.remove("invalid");
-                },
-                { once: true }
-              );
+              this.makeErrorSquare(line, column);
             } else {
               list.add(value);
             }
@@ -1169,9 +1138,22 @@ export default {
         }
       }
     },
+    // I am not sure this is correct solution, I have to check it.
+    async verify() {
+      this.sudokuTable = [];
+      this.errorInSudokuTable = false;
+      await this.checkNumbers();
+      await this.makeSudokuTable();
+      await this.checkHorizontal();
+      await this.checkVertical();
+      await this.checkSquares();
+    },
+    // I would like to clear all inputs without reloading the page, for now it's ok
+    clear() {
+      location.reload();
+    },
     created() {
       this.getSudoku();
-      // this.listOfinputs = document.querySelectorAll("input");
     }
   }
 };
