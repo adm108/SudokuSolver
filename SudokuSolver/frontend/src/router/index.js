@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import YourSudoku from "../views/YourSudoku.vue";
+import OneSudoku from "../views/OneSudoku.vue";
 
 Vue.use(VueRouter);
 
@@ -12,8 +13,14 @@ const routes = [
     component: Home
   },
   {
+    path: "/yoursudoku/:slug",
+    name: "OneSudoku",
+    component: OneSudoku,
+    props: true
+  },
+  {
     path: "/yoursudoku",
-    name: "Sudoku",
+    name: "YourSudoku",
     component: YourSudoku
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

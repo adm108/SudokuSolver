@@ -1151,10 +1151,11 @@ export default {
     // I would like to clear all inputs without reloading the page, for now it's ok
     clear() {
       location.reload();
-    },
-    created() {
-      this.getSudoku();
     }
+  },
+  created() {
+    this.getSudoku();
+    console.log(this.sudokuExample);
   }
 };
 </script>

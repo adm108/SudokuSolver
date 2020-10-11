@@ -8,7 +8,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <router-link
-              :to="{ name: 'Sudoku' }"
+              :to="{ name: 'YourSudoku' }"
               class="btn btn-sm btn-primary mx-2"
               >Your Sudoku</router-link
             >
