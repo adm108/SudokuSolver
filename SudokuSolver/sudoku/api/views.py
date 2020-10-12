@@ -6,7 +6,7 @@ from sudoku.models import SudokuBeforeSolve
 
 
 class SudokuBeforeSolveViewSet(viewsets.ModelViewSet):
-    queryset = SudokuBeforeSolve.objects.all()
+    queryset = SudokuBeforeSolve.objects.all().order_by("-created_at")
     lookup_field = "slug"
     serializer_class = SudokuBeforeSolveSerializer
     permission_classes = [IsAuthorOrReadOnly, IsAuthenticated]

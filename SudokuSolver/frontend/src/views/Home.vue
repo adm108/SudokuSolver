@@ -835,6 +835,8 @@
         </tr>
       </tbody>
     </table>
+    <br />
+    <p v-if="error" class="error-message">{{ error }}</p>
     <div id="container">
       <button id="button1" @click="verify()">Verify</button>
       <button id="button2" @click="clear()">Clear</button>
@@ -934,7 +936,7 @@ export default {
       case88: "",
       sudokuExample: [],
       sudokuTable: [],
-      errorInSudokuTable: false
+      error: null
     };
   },
   methods: {
@@ -947,6 +949,7 @@ export default {
     makeErrorSquare(line, column) {
       const input = document.getElementById("case" + line + column);
       input.classList.add("invalid");
+      this.error = "Wrong value in your sudoku!";
       // remove css class when user put some new value (only once - "once" parameter)
       input.addEventListener(
         "input",
@@ -1141,7 +1144,7 @@ export default {
     // I am not sure this is correct solution, I have to check it.
     async verify() {
       this.sudokuTable = [];
-      this.errorInSudokuTable = false;
+      this.error = null;
       await this.checkNumbers();
       await this.makeSudokuTable();
       await this.checkHorizontal();
@@ -1155,6 +1158,7 @@ export default {
   },
   created() {
     this.getSudoku();
+    document.title = "Sudoku Solver";
     console.log(this.sudokuExample);
   }
 };
@@ -1236,6 +1240,10 @@ td:nth-of-type(6) {
   border-right: 1px solid #000;
 }
 h1 {
+  text-align: center;
+}
+.error-message {
+  color: red;
   text-align: center;
 }
 </style>

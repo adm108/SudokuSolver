@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     getSudoku() {
-      let endpoint = "api/sudoku/";
+      let endpoint = "/api/sudoku/";
       apiService(endpoint).then(data => {
         this.yourSudoku.push(...data.results);
       });
@@ -32,6 +32,7 @@ export default {
   },
   created() {
     this.getSudoku();
+    document.title = "Your Sudoku";
     console.log(this.yourSudoku);
   }
 };
