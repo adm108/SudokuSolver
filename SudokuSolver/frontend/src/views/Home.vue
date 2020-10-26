@@ -836,11 +836,12 @@
       </tbody>
     </table>
     <br />
-    <p v-if="error" class="error-message">{{ error }}</p>
+    <p v-if="firstError" class="error-message">{{ firstError }}</p>
+    <p v-if="secondError" class="error-message">{{ secondError }}</p>
     <div id="container">
       <button id="button1" @click="verify()">Verify</button>
       <button id="button2" @click="clear()">Clear</button>
-      <button id="button3">Solve</button>
+      <button id="button3" @click="solveSudoku()">Solve</button>
     </div>
     <br />
   </div>
@@ -936,7 +937,8 @@ export default {
       case88: "",
       sudokuExample: [],
       sudokuTable: [],
-      error: null
+      firstError: null,
+      secondError: null
     };
   },
   methods: {
@@ -949,7 +951,7 @@ export default {
     makeErrorSquare(line, column) {
       const input = document.getElementById("case" + line + column);
       input.classList.add("invalid");
-      this.error = "Wrong value in your sudoku!";
+      this.firstError = "Wrong value in your sudoku!";
       // remove css class when user put some new value (only once - "once" parameter)
       input.addEventListener(
         "input",
@@ -964,11 +966,20 @@ export default {
       for (const input of listOfInput) {
         input.classList.remove("invalid");
       }
+      var numbersOfValues = 0;
+      // var array = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
       for (const input of listOfInput) {
         const validateInput = input.checkValidity();
         if (validateInput === false) {
-          console.log("wrong value in the sudoku table!");
+          this.firstError = "Wrong value in your sudoku!";
         }
+        if (input.value !== "") {
+          numbersOfValues += 1;
+        }
+      }
+      console.log(numbersOfValues);
+      if (numbersOfValues < 10) {
+        this.secondError = "Your sudoku need to have at least 10 values!";
       }
     },
     makeSudokuTable() {
@@ -995,6 +1006,7 @@ export default {
             if (valueExists) {
               console.log("Error - double " + line + "-" + column);
               this.makeErrorSquare(line, column);
+              this.firstError = "Wrong value in your sudoku!";
             } else {
               list.add(value);
             }
@@ -1013,6 +1025,7 @@ export default {
             if (valueExists) {
               console.log("Error - double " + line + "-" + column);
               this.makeErrorSquare(line, column);
+              this.firstError = "Wrong value in your sudoku!";
             } else {
               list.add(value);
             }
@@ -1134,6 +1147,7 @@ export default {
             if (valueExists) {
               console.log("Error - double " + line + "-" + column);
               this.makeErrorSquare(line, column);
+              this.firstError = "Wrong value in your sudoku!";
             } else {
               list.add(value);
             }
@@ -1142,18 +1156,27 @@ export default {
       }
     },
     // I am not sure this is correct solution, I have to check it.
-    async verify() {
+    verify() {
       this.sudokuTable = [];
-      this.error = null;
-      await this.checkNumbers();
-      await this.makeSudokuTable();
-      await this.checkHorizontal();
-      await this.checkVertical();
-      await this.checkSquares();
+      this.firstError = null;
+      this.secondError = null;
+      this.checkNumbers();
+      this.makeSudokuTable();
+      this.checkHorizontal();
+      this.checkVertical();
+      this.checkSquares();
     },
     // I would like to clear all inputs without reloading the page, for now it's ok
     clear() {
       location.reload();
+    },
+    solveSudoku() {
+      this.verify();
+      if (this.firstError === null && this.secondError === null) {
+        alert("good");
+      } else {
+        alert("not good");
+      }
     }
   },
   created() {

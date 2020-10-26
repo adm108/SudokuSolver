@@ -8,7 +8,9 @@ class SudokuBeforeSolve(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    a1b1 = models.PositiveIntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(9)])
+    a1b1 = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
     # a2b1 = models.PositiveIntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(9)])
     # a3b1 = models.PositiveIntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(9)])
     # a4b1 = models.PositiveIntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(9)])
@@ -103,9 +105,13 @@ class SudokuBeforeSolve(models.Model):
 
 
 class SolvedSudoku(models.Model):
-    sudoku_before_solve = models.OneToOneField(SudokuBeforeSolve, on_delete=models.CASCADE, default=None)
+    sudoku_before_solve = models.OneToOneField(
+        SudokuBeforeSolve, on_delete=models.CASCADE, default=None
+    )
 
-    a1b1 = models.PositiveIntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(9)])
+    a1b1 = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
     # a2b1 = models.PositiveIntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(9)])
     # a3b1 = models.PositiveIntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(9)])
     # a4b1 = models.PositiveIntegerField(null=True, validators=[MinValueValidator(1), MaxValueValidator(9)])
