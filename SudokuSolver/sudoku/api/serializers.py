@@ -9,13 +9,12 @@ class SudokuBeforeSolveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SudokuBeforeSolve
-        fields = '__all__'
-        
+        fields = "__all__"
+
     def get_created_at(self, instance):
         return instance.created_at.strftime("%d-%m-%Y %H:%M:%S")
 
 
 class SolvedSudokuSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = SolvedSudoku

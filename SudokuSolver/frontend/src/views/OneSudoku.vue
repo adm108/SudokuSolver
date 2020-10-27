@@ -1,9 +1,15 @@
 <template>
   <div class="single-sudoku">
-    <h1>{{ sudoku.a1b1 }}</h1>
+    <h1>{{ sudoku.case00 }}</h1>
+    <h1>{{ sudoku.case01 }}</h1>
+    <h1>{{ sudoku.case02 }}</h1>
+    <h1>{{ sudoku.case03 }}</h1>
+    <h1>{{ sudoku.case04 }}</h1>
     <h1>{{ sudoku.author }}</h1>
     <h1>{{ sudoku.created_at }}</h1>
     <h1>{{ sudoku.slug }}</h1>
+    <hr />
+    <h1>{{ sudoku.solved_sudoku }}</h1>
   </div>
 </template>
 
