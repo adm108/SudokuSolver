@@ -12,4 +12,7 @@ class SudokuBeforeSolveViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthorOrReadOnly, IsAuthenticated]
 
     def perform_create(self, serializer):
+        # print(serializer.data)
+        print(type(self.request.data["case00"]))
         serializer.save(author=self.request.user)
+

@@ -838,6 +838,7 @@
     <br />
     <p v-if="firstError" class="error-message">{{ firstError }}</p>
     <p v-if="secondError" class="error-message">{{ secondError }}</p>
+    <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
     <div id="container">
       <button id="button1" @click="verify()">Verify</button>
       <button id="button2" @click="clear()">Clear</button>
@@ -938,7 +939,8 @@ export default {
       sudokuExample: [],
       sudokuTable: [],
       firstError: null,
-      secondError: null
+      secondError: null,
+      successMessage: null
     };
   },
   methods: {
@@ -976,8 +978,8 @@ export default {
           numbersOfValues += 1;
         }
       }
-      if (numbersOfValues < 10) {
-        this.secondError = "Your sudoku need to have at least 10 values!";
+      if (numbersOfValues < 3) {
+        this.secondError = "Your sudoku need to have at least 3 values!";
       }
     },
     makeSudokuTable() {
@@ -1158,11 +1160,15 @@ export default {
       this.sudokuTable = [];
       this.firstError = null;
       this.secondError = null;
+      this.successMessage = null;
       this.checkNumbers();
       this.makeSudokuTable();
       this.checkHorizontal();
       this.checkVertical();
       this.checkSquares();
+      if (this.firstError === null && this.secondError === null) {
+        this.successMessage = "Everything is ok! :)";
+      }
     },
     // I would like to clear all inputs without reloading the page, for now it's ok
     clear() {
@@ -1256,13 +1262,11 @@ export default {
           case87: this.case87,
           case88: this.case88
         }).then(sudoku_data => {
-          this.$router.push({
-            name: "OneSudoku",
-            params: { slug: sudoku_data.slug }
-          });
+          console.log(sudoku_data.case00);
+          
         });
       } else {
-        alert("not good");
+        alert("NOT GOOD");
       }
     }
   },
@@ -1354,6 +1358,10 @@ h1 {
 }
 .error-message {
   color: red;
+  text-align: center;
+}
+.success-message {
+  color: #56c224;
   text-align: center;
 }
 </style>
