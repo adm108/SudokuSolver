@@ -3,10 +3,11 @@ from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-class SudokuBeforeSolve(models.Model):
+class Sudoku(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=255, unique=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    solve_counter = models.PositiveIntegerField(null=True)
 
     case00 = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
@@ -260,266 +261,258 @@ class SudokuBeforeSolve(models.Model):
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
 
-    class Meta:
-        verbose_name_plural = "Sudoku before solve"
-
-
-class SolvedSudoku(models.Model):
-    sudoku_before_solve = models.OneToOneField(
-        SudokuBeforeSolve, on_delete=models.CASCADE, default=None
-    )
-
-    case00 = models.PositiveIntegerField(
+    # Fields for solved sudoku
+    case00s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case01 = models.PositiveIntegerField(
+    case01s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case02 = models.PositiveIntegerField(
+    case02s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case03 = models.PositiveIntegerField(
+    case03s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case04 = models.PositiveIntegerField(
+    case04s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case05 = models.PositiveIntegerField(
+    case05s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case06 = models.PositiveIntegerField(
+    case06s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case07 = models.PositiveIntegerField(
+    case07s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case08 = models.PositiveIntegerField(
+    case08s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
 
-    case10 = models.PositiveIntegerField(
+    case10s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case11 = models.PositiveIntegerField(
+    case11s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case12 = models.PositiveIntegerField(
+    case12s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case13 = models.PositiveIntegerField(
+    case13s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case14 = models.PositiveIntegerField(
+    case14s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case15 = models.PositiveIntegerField(
+    case15s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case16 = models.PositiveIntegerField(
+    case16s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case17 = models.PositiveIntegerField(
+    case17s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case18 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-
-    case20 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case21 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case22 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case23 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case24 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case25 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case26 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case27 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case28 = models.PositiveIntegerField(
+    case18s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
 
-    case30 = models.PositiveIntegerField(
+    case20s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case31 = models.PositiveIntegerField(
+    case21s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case32 = models.PositiveIntegerField(
+    case22s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case33 = models.PositiveIntegerField(
+    case23s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case34 = models.PositiveIntegerField(
+    case24s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case35 = models.PositiveIntegerField(
+    case25s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case36 = models.PositiveIntegerField(
+    case26s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case37 = models.PositiveIntegerField(
+    case27s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case38 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-
-    case40 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case41 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case42 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case43 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case44 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case45 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case46 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case47 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case48 = models.PositiveIntegerField(
+    case28s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
 
-    case50 = models.PositiveIntegerField(
+    case30s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case51 = models.PositiveIntegerField(
+    case31s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case52 = models.PositiveIntegerField(
+    case32s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case53 = models.PositiveIntegerField(
+    case33s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case54 = models.PositiveIntegerField(
+    case34s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case55 = models.PositiveIntegerField(
+    case35s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case56 = models.PositiveIntegerField(
+    case36s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case57 = models.PositiveIntegerField(
+    case37s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case58 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-
-    case60 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case61 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case62 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case63 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case64 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case65 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case66 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case67 = models.PositiveIntegerField(
-        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
-    )
-    case68 = models.PositiveIntegerField(
+    case38s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
 
-    case70 = models.PositiveIntegerField(
+    case40s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case71 = models.PositiveIntegerField(
+    case41s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case72 = models.PositiveIntegerField(
+    case42s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case73 = models.PositiveIntegerField(
+    case43s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case74 = models.PositiveIntegerField(
+    case44s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case75 = models.PositiveIntegerField(
+    case45s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case76 = models.PositiveIntegerField(
+    case46s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case77 = models.PositiveIntegerField(
+    case47s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case78 = models.PositiveIntegerField(
+    case48s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
 
-    case80 = models.PositiveIntegerField(
+    case50s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case81 = models.PositiveIntegerField(
+    case51s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case82 = models.PositiveIntegerField(
+    case52s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case83 = models.PositiveIntegerField(
+    case53s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case84 = models.PositiveIntegerField(
+    case54s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case85 = models.PositiveIntegerField(
+    case55s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case86 = models.PositiveIntegerField(
+    case56s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case87 = models.PositiveIntegerField(
+    case57s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
-    case88 = models.PositiveIntegerField(
+    case58s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+
+    case60s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case61s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case62s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case63s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case64s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case65s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case66s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case67s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case68s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+
+    case70s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case71s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case72s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case73s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case74s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case75s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case76s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case77s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case78s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+
+    case80s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case81s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case82s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case83s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case84s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case85s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case86s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case87s = models.PositiveIntegerField(
+        null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
+    )
+    case88s = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]
     )
 
     class Meta:
-        verbose_name_plural = "Solved sudoku"
+        verbose_name_plural = "Sudoku"

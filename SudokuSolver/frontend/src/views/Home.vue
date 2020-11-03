@@ -12,7 +12,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case00"
+              v-model.number="case00"
               id="case00"
             />
           </td>
@@ -22,7 +22,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case01"
+              v-model.number="case01"
               id="case01"
             />
           </td>
@@ -32,7 +32,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case02"
+              v-model.number="case02"
               id="case02"
             />
           </td>
@@ -42,7 +42,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case03"
+              v-model.number="case03"
               id="case03"
             />
           </td>
@@ -52,7 +52,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case04"
+              v-model.number="case04"
               id="case04"
             />
           </td>
@@ -62,7 +62,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case05"
+              v-model.number="case05"
               id="case05"
             />
           </td>
@@ -72,7 +72,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case06"
+              v-model.number="case06"
               id="case06"
             />
           </td>
@@ -82,7 +82,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case07"
+              v-model.number="case07"
               id="case07"
             />
           </td>
@@ -92,7 +92,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case08"
+              v-model.number="case08"
               id="case08"
             />
           </td>
@@ -104,7 +104,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case10"
+              v-model.number="case10"
               id="case10"
             />
           </td>
@@ -114,7 +114,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case11"
+              v-model.number="case11"
               id="case11"
             />
           </td>
@@ -124,7 +124,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case12"
+              v-model.number="case12"
               id="case12"
             />
           </td>
@@ -134,7 +134,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case13"
+              v-model.number="case13"
               id="case13"
             />
           </td>
@@ -144,7 +144,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case14"
+              v-model.number="case14"
               id="case14"
             />
           </td>
@@ -154,7 +154,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case15"
+              v-model.number="case15"
               id="case15"
             />
           </td>
@@ -164,7 +164,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case16"
+              v-model.number="case16"
               id="case16"
             />
           </td>
@@ -174,7 +174,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case17"
+              v-model.number="case17"
               id="case17"
             />
           </td>
@@ -184,7 +184,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case18"
+              v-model.number="case18"
               id="case18"
             />
           </td>
@@ -196,7 +196,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case20"
+              v-model.number="case20"
               id="case20"
             />
           </td>
@@ -206,7 +206,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case21"
+              v-model.number="case21"
               id="case21"
             />
           </td>
@@ -216,7 +216,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case22"
+              v-model.number="case22"
               id="case22"
             />
           </td>
@@ -226,7 +226,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case23"
+              v-model.number="case23"
               id="case23"
             />
           </td>
@@ -236,7 +236,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case24"
+              v-model.number="case24"
               id="case24"
             />
           </td>
@@ -246,7 +246,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case25"
+              v-model.number="case25"
               id="case25"
             />
           </td>
@@ -256,7 +256,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case26"
+              v-model.number="case26"
               id="case26"
             />
           </td>
@@ -266,7 +266,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case27"
+              v-model.number="case27"
               id="case27"
             />
           </td>
@@ -276,7 +276,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case28"
+              v-model.number="case28"
               id="case28"
             />
           </td>
@@ -288,7 +288,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case30"
+              v-model.number="case30"
               id="case30"
             />
           </td>
@@ -298,7 +298,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case31"
+              v-model.number="case31"
               id="case31"
             />
           </td>
@@ -308,7 +308,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case32"
+              v-model.number="case32"
               id="case32"
             />
           </td>
@@ -318,7 +318,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case33"
+              v-model.number="case33"
               id="case33"
             />
           </td>
@@ -328,7 +328,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case34"
+              v-model.number="case34"
               id="case34"
             />
           </td>
@@ -338,7 +338,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case35"
+              v-model.number="case35"
               id="case35"
             />
           </td>
@@ -348,7 +348,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case36"
+              v-model.number="case36"
               id="case36"
             />
           </td>
@@ -358,7 +358,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case37"
+              v-model.number="case37"
               id="case37"
             />
           </td>
@@ -368,7 +368,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case38"
+              v-model.number="case38"
               id="case38"
             />
           </td>
@@ -380,7 +380,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case40"
+              v-model.number="case40"
               id="case40"
             />
           </td>
@@ -390,7 +390,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case41"
+              v-model.number="case41"
               id="case41"
             />
           </td>
@@ -400,7 +400,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case42"
+              v-model.number="case42"
               id="case42"
             />
           </td>
@@ -410,7 +410,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case43"
+              v-model.number="case43"
               id="case43"
             />
           </td>
@@ -420,7 +420,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case44"
+              v-model.number="case44"
               id="case44"
             />
           </td>
@@ -430,7 +430,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case45"
+              v-model.number="case45"
               id="case45"
             />
           </td>
@@ -440,7 +440,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case46"
+              v-model.number="case46"
               id="case46"
             />
           </td>
@@ -450,7 +450,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case47"
+              v-model.number="case47"
               id="case47"
             />
           </td>
@@ -460,7 +460,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case48"
+              v-model.number="case48"
               id="case48"
             />
           </td>
@@ -472,7 +472,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case50"
+              v-model.number="case50"
               id="case50"
             />
           </td>
@@ -482,7 +482,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case51"
+              v-model.number="case51"
               id="case51"
             />
           </td>
@@ -492,7 +492,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case52"
+              v-model.number="case52"
               id="case52"
             />
           </td>
@@ -502,7 +502,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case53"
+              v-model.number="case53"
               id="case53"
             />
           </td>
@@ -512,7 +512,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case54"
+              v-model.number="case54"
               id="case54"
             />
           </td>
@@ -522,7 +522,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case55"
+              v-model.number="case55"
               id="case55"
             />
           </td>
@@ -532,7 +532,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case56"
+              v-model.number="case56"
               id="case56"
             />
           </td>
@@ -542,7 +542,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case57"
+              v-model.number="case57"
               id="case57"
             />
           </td>
@@ -552,7 +552,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case58"
+              v-model.number="case58"
               id="case58"
             />
           </td>
@@ -564,7 +564,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case60"
+              v-model.number="case60"
               id="case60"
             />
           </td>
@@ -574,7 +574,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case61"
+              v-model.number="case61"
               id="case61"
             />
           </td>
@@ -584,7 +584,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case62"
+              v-model.number="case62"
               id="case62"
             />
           </td>
@@ -594,7 +594,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case63"
+              v-model.number="case63"
               id="case63"
             />
           </td>
@@ -604,7 +604,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case64"
+              v-model.number="case64"
               id="case64"
             />
           </td>
@@ -614,7 +614,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case65"
+              v-model.number="case65"
               id="case65"
             />
           </td>
@@ -624,7 +624,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case66"
+              v-model.number="case66"
               id="case66"
             />
           </td>
@@ -634,7 +634,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case67"
+              v-model.number="case67"
               id="case67"
             />
           </td>
@@ -644,7 +644,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case68"
+              v-model.number="case68"
               id="case68"
             />
           </td>
@@ -656,7 +656,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case70"
+              v-model.number="case70"
               id="case70"
             />
           </td>
@@ -666,7 +666,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case71"
+              v-model.number="case71"
               id="case71"
             />
           </td>
@@ -676,7 +676,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case72"
+              v-model.number="case72"
               id="case72"
             />
           </td>
@@ -686,7 +686,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case73"
+              v-model.number="case73"
               id="case73"
             />
           </td>
@@ -696,7 +696,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case74"
+              v-model.number="case74"
               id="case74"
             />
           </td>
@@ -706,7 +706,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case75"
+              v-model.number="case75"
               id="case75"
             />
           </td>
@@ -716,7 +716,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case76"
+              v-model.number="case76"
               id="case76"
             />
           </td>
@@ -726,7 +726,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case77"
+              v-model.number="case77"
               id="case77"
             />
           </td>
@@ -736,7 +736,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case78"
+              v-model.number="case78"
               id="case78"
             />
           </td>
@@ -748,7 +748,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case80"
+              v-model.number="case80"
               id="case80"
             />
           </td>
@@ -758,7 +758,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case81"
+              v-model.number="case81"
               id="case81"
             />
           </td>
@@ -768,7 +768,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case82"
+              v-model.number="case82"
               id="case82"
             />
           </td>
@@ -778,7 +778,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case83"
+              v-model.number="case83"
               id="case83"
             />
           </td>
@@ -788,7 +788,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case84"
+              v-model.number="case84"
               id="case84"
             />
           </td>
@@ -798,7 +798,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case85"
+              v-model.number="case85"
               id="case85"
             />
           </td>
@@ -808,7 +808,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case86"
+              v-model.number="case86"
               id="case86"
             />
           </td>
@@ -818,7 +818,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case87"
+              v-model.number="case87"
               id="case87"
             />
           </td>
@@ -828,7 +828,7 @@
               min="1"
               max="9"
               step="1"
-              v-model="case88"
+              v-model.number="case88"
               id="case88"
             />
           </td>
@@ -1177,6 +1177,8 @@ export default {
     solveSudoku() {
       this.verify();
       if (this.firstError === null && this.secondError === null) {
+        console.log(this.case00);
+        console.log(typeof this.case00);
         let endpoint = "/api/sudoku/";
         let method = "POST";
         apiService(endpoint, method, {
@@ -1263,7 +1265,6 @@ export default {
           case88: this.case88
         }).then(sudoku_data => {
           console.log(sudoku_data.case00);
-          
         });
       } else {
         alert("NOT GOOD");

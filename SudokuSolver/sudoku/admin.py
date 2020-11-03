@@ -1,5 +1,4 @@
 from django.contrib import admin
-from sudoku.models import SudokuBeforeSolve, SolvedSudoku
+from sudoku.models import Sudoku
 
-admin.site.register(SudokuBeforeSolve)
-admin.site.register(SolvedSudoku)
+admin.site.register(Sudoku)
