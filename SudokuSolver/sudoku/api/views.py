@@ -112,3 +112,4 @@ class SudokuViewSet(viewsets.ModelViewSet):
             case87s=results[0][8][7],
             case88s=results[0][8][8],
         )
+

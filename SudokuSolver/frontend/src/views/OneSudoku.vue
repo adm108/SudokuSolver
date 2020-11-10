@@ -1,15 +1,133 @@
 <template>
   <div class="single-sudoku">
-    <h1>{{ sudoku.case00 }}</h1>
-    <h1>{{ sudoku.case01 }}</h1>
-    <h1>{{ sudoku.case02 }}</h1>
-    <h1>{{ sudoku.case03 }}</h1>
-    <h1>{{ sudoku.case04 }}</h1>
-    <h1>{{ sudoku.author }}</h1>
-    <h1>{{ sudoku.created_at }}</h1>
-    <h1>{{ sudoku.slug }}</h1>
-    <hr />
-    <h1>{{ sudoku.solved_sudoku }}</h1>
+    <br />
+    <br />
+    <br />
+    <table>
+      <caption>
+        Sudoku
+      </caption>
+      <colgroup>
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <colgroup>
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <colgroup>
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -52,5 +170,19 @@ h1 {
 }
 .single-sudoku {
   min-height: calc(100vh - 114px - 58px);
+}
+table {
+  border-collapse: collapse;
+}
+colgroup,
+tbody {
+  border: solid medium;
+}
+td {
+  border: solid thin;
+  height: 2em;
+  width: 2em;
+  text-align: center;
+  padding: 0;
 }
 </style>
