@@ -2,7 +2,7 @@
   <div class="single-sudoku">
     <br />
     <h3>STATISTICS</h3>
-    <h5>Number of funcion calls:</h5>
+    <h5>Number of function calls:</h5>
     <h5 class="statistics">{{ sudoku.solve_counter }}</h5>
     <h5>Time of algorithm:</h5>
     <h5 class="statistics">{{ sudoku.solve_time }} [s]</h5>
@@ -251,9 +251,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
 .single-sudoku {
   min-height: calc(100vh - 114px - 58px);
 }
@@ -294,6 +291,7 @@ td:nth-of-type(3),
 td:nth-of-type(6) {
   border-right: 2px solid rgb(80, 78, 78);
 }
+h1,
 h3,
 h5 {
   text-align: center;

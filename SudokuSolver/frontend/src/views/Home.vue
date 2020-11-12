@@ -1264,7 +1264,10 @@ export default {
           case87: this.case87,
           case88: this.case88
         }).then(sudoku_data => {
-          console.log(sudoku_data.case00);
+          this.$router.push({
+            name: "OneSudoku",
+            params: { slug: sudoku_data.slug }
+          });
         });
       } else {
         alert("NOT GOOD");

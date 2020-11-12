@@ -37,23 +37,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "django.contrib.sites",
-
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-
     "rest_auth",
     "rest_auth.registration",
-
     "crispy_forms",
     "webpack_loader",
-    
     "rest_framework",
     "rest_framework.authtoken",
     "users",
-    "sudoku"
+    "sudoku",
 ]
 
 MIDDLEWARE = [
@@ -71,7 +66,7 @@ ROOT_URLCONF = "SudokuSolver.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -130,39 +125,37 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-# Custom user model 
+# Custom user model
 AUTH_USER_MODEL = "users.CustomUser"
 
 # django-crispy-forms
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # django.contrib.sites
 SITE_ID = 1
 
 # django-allauth
-ACCOUNT_EMAIL_VERYFICATION = 'none'
-ACCOUNT_EMAIL_REQUIRED = (True)
+ACCOUNT_EMAIL_VERYFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
 
 # urls endpoints with login and logout scenarious
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication'
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 2,
 }
 
 WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'dist/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json'),
+    "DEFAULT": {
+        "BUNDLE_DIR_NAME": "dist/",
+        "STATS_FILE": os.path.join(BASE_DIR, "frontend", "webpack-stats.json"),
     }
 }
