@@ -4,6 +4,7 @@ from sudoku.api.permissions import IsAuthorOrReadOnly
 from sudoku.api.serializers import SudokuSerializer
 from sudoku.models import Sudoku
 from sudoku.api import sudoku_algorithm
+import time
 
 
 class SudokuViewSet(viewsets.ModelViewSet):
@@ -24,12 +25,16 @@ class SudokuViewSet(viewsets.ModelViewSet):
             board.append(line)
             line = []
 
-        # solving sudoku algorithm
+        # solving sudoku algorithm with time of running
+        start = time.time()
         results = sudoku_algorithm.solve(board)
+        end = time.time()
+        value = end - start
 
         serializer.save(
             author=self.request.user,
             solve_counter=results[1],
+            solve_time=value,
             case00s=results[0][0][0],
             case01s=results[0][0][1],
             case02s=results[0][0][2],

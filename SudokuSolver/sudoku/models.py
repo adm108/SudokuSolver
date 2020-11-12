@@ -8,6 +8,7 @@ class Sudoku(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     solve_counter = models.PositiveIntegerField(null=True)
+    solve_time = models.DecimalField(decimal_places=5, max_digits=7, null=True)
 
     case00 = models.PositiveIntegerField(
         null=True, validators=[MinValueValidator(1), MaxValueValidator(9)]

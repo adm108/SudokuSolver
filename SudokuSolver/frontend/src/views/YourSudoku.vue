@@ -2,12 +2,11 @@
   <div class="main">
     <h1>Here will be your sudoku!</h1>
     <div v-for="sudoku in yourSudoku" :key="sudoku.id">
-      <p>{{ sudoku.author }}</p>
-      <h4>{{ sudoku.a1b1 }}</h4>
       <router-link :to="{ name: 'OneSudoku', params: { slug: sudoku.slug } }">
         {{ sudoku.slug }}
       </router-link>
       <h4>{{ sudoku.created_at }}</h4>
+      <h4>{{ sudoku.author }}</h4>
       <hr />
     </div>
   </div>
