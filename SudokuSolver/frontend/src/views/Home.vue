@@ -839,6 +839,7 @@
     <p v-if="firstError" class="error-message">{{ firstError }}</p>
     <p v-if="secondError" class="error-message">{{ secondError }}</p>
     <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+    <p v-if="loadingSudoku" class="success-message">...SOLVING SUDOKU...</p>
     <div id="container">
       <button id="button1" @click="verify()">Verify</button>
       <button id="button2" @click="clear()">Clear</button>
@@ -940,13 +941,14 @@ export default {
       sudokuTable: [],
       firstError: null,
       secondError: null,
-      successMessage: null
+      successMessage: null,
+      loadingSudoku: false,
     };
   },
   methods: {
     getSudoku() {
       let endpoint = "api/sudoku/";
-      apiService(endpoint).then(data => {
+      apiService(endpoint).then((data) => {
         this.sudokuExample.push(...data.results);
       });
     },
@@ -1044,7 +1046,7 @@ export default {
           [1, 2],
           [2, 0],
           [2, 1],
-          [2, 2]
+          [2, 2],
         ],
         [
           [0, 3],
@@ -1055,7 +1057,7 @@ export default {
           [1, 5],
           [2, 3],
           [2, 4],
-          [2, 5]
+          [2, 5],
         ],
         [
           [0, 6],
@@ -1066,7 +1068,7 @@ export default {
           [1, 8],
           [2, 6],
           [2, 7],
-          [2, 8]
+          [2, 8],
         ],
         [
           [3, 0],
@@ -1077,7 +1079,7 @@ export default {
           [4, 2],
           [5, 0],
           [5, 1],
-          [5, 2]
+          [5, 2],
         ],
         [
           [3, 3],
@@ -1088,7 +1090,7 @@ export default {
           [4, 5],
           [5, 3],
           [5, 4],
-          [5, 5]
+          [5, 5],
         ],
         [
           [3, 6],
@@ -1099,7 +1101,7 @@ export default {
           [4, 8],
           [5, 6],
           [5, 7],
-          [5, 8]
+          [5, 8],
         ],
         [
           [6, 0],
@@ -1110,7 +1112,7 @@ export default {
           [7, 2],
           [8, 0],
           [8, 1],
-          [8, 2]
+          [8, 2],
         ],
         [
           [6, 3],
@@ -1121,7 +1123,7 @@ export default {
           [7, 5],
           [8, 3],
           [8, 4],
-          [8, 5]
+          [8, 5],
         ],
         [
           [6, 6],
@@ -1132,8 +1134,8 @@ export default {
           [7, 8],
           [8, 6],
           [8, 7],
-          [8, 8]
-        ]
+          [8, 8],
+        ],
       ];
       for (const square of squares) {
         const list = new Set();
@@ -1175,110 +1177,112 @@ export default {
       location.reload();
     },
     solveSudoku() {
+      console.log("first step");
       this.verify();
       if (this.firstError === null && this.secondError === null) {
-        console.log(this.case00);
-        console.log(typeof this.case00);
+        this.loadingSudoku = true;
         let endpoint = "/api/sudoku/";
         let method = "POST";
+        // ternatry operators changes empty strings to null (it's for preventing errors)
         apiService(endpoint, method, {
-          case00: this.case00,
-          case01: this.case01,
-          case02: this.case02,
-          case03: this.case03,
-          case04: this.case04,
-          case05: this.case05,
-          case06: this.case06,
-          case07: this.case07,
-          case08: this.case08,
-          case10: this.case10,
-          case11: this.case11,
-          case12: this.case12,
-          case13: this.case13,
-          case14: this.case14,
-          case15: this.case15,
-          case16: this.case16,
-          case17: this.case17,
-          case18: this.case18,
-          case20: this.case20,
-          case21: this.case21,
-          case22: this.case22,
-          case23: this.case23,
-          case24: this.case24,
-          case25: this.case25,
-          case26: this.case26,
-          case27: this.case27,
-          case28: this.case28,
-          case30: this.case30,
-          case31: this.case31,
-          case32: this.case32,
-          case33: this.case33,
-          case34: this.case34,
-          case35: this.case35,
-          case36: this.case36,
-          case37: this.case37,
-          case38: this.case38,
-          case40: this.case40,
-          case41: this.case41,
-          case42: this.case42,
-          case43: this.case43,
-          case44: this.case44,
-          case45: this.case45,
-          case46: this.case46,
-          case47: this.case47,
-          case48: this.case48,
-          case50: this.case50,
-          case51: this.case51,
-          case52: this.case52,
-          case53: this.case53,
-          case54: this.case54,
-          case55: this.case55,
-          case56: this.case56,
-          case57: this.case57,
-          case58: this.case58,
-          case60: this.case60,
-          case61: this.case61,
-          case62: this.case62,
-          case63: this.case63,
-          case64: this.case64,
-          case65: this.case65,
-          case66: this.case66,
-          case67: this.case67,
-          case68: this.case68,
-          case70: this.case70,
-          case71: this.case71,
-          case72: this.case72,
-          case73: this.case73,
-          case74: this.case74,
-          case75: this.case75,
-          case76: this.case76,
-          case77: this.case77,
-          case78: this.case78,
-          case80: this.case80,
-          case81: this.case81,
-          case82: this.case82,
-          case83: this.case83,
-          case84: this.case84,
-          case85: this.case85,
-          case86: this.case86,
-          case87: this.case87,
-          case88: this.case88
-        }).then(sudoku_data => {
+          case00: this.case00 === "" ? (this.case00 = null) : this.case00,
+          case01: this.case01 === "" ? (this.case01 = null) : this.case01,
+          case02: this.case02 === "" ? (this.case02 = null) : this.case02,
+          case03: this.case03 === "" ? (this.case03 = null) : this.case03,
+          case04: this.case04 === "" ? (this.case04 = null) : this.case04,
+          case05: this.case05 === "" ? (this.case05 = null) : this.case05,
+          case06: this.case06 === "" ? (this.case06 = null) : this.case06,
+          case07: this.case07 === "" ? (this.case07 = null) : this.case07,
+          case08: this.case08 === "" ? (this.case08 = null) : this.case08,
+          case10: this.case10 === "" ? (this.case10 = null) : this.case10,
+          case11: this.case11 === "" ? (this.case11 = null) : this.case11,
+          case12: this.case12 === "" ? (this.case12 = null) : this.case12,
+          case13: this.case13 === "" ? (this.case13 = null) : this.case13,
+          case14: this.case14 === "" ? (this.case14 = null) : this.case14,
+          case15: this.case15 === "" ? (this.case15 = null) : this.case15,
+          case16: this.case16 === "" ? (this.case16 = null) : this.case16,
+          case17: this.case17 === "" ? (this.case17 = null) : this.case17,
+          case18: this.case18 === "" ? (this.case18 = null) : this.case18,
+          case20: this.case20 === "" ? (this.case20 = null) : this.case20,
+          case21: this.case21 === "" ? (this.case21 = null) : this.case21,
+          case22: this.case22 === "" ? (this.case22 = null) : this.case22,
+          case23: this.case23 === "" ? (this.case23 = null) : this.case23,
+          case24: this.case24 === "" ? (this.case24 = null) : this.case24,
+          case25: this.case25 === "" ? (this.case25 = null) : this.case25,
+          case26: this.case26 === "" ? (this.case26 = null) : this.case26,
+          case27: this.case27 === "" ? (this.case27 = null) : this.case27,
+          case28: this.case28 === "" ? (this.case28 = null) : this.case28,
+          case30: this.case30 === "" ? (this.case30 = null) : this.case30,
+          case31: this.case31 === "" ? (this.case31 = null) : this.case31,
+          case32: this.case32 === "" ? (this.case32 = null) : this.case32,
+          case33: this.case33 === "" ? (this.case33 = null) : this.case33,
+          case34: this.case34 === "" ? (this.case34 = null) : this.case34,
+          case35: this.case35 === "" ? (this.case35 = null) : this.case35,
+          case36: this.case36 === "" ? (this.case36 = null) : this.case36,
+          case37: this.case37 === "" ? (this.case37 = null) : this.case37,
+          case38: this.case38 === "" ? (this.case38 = null) : this.case38,
+          case40: this.case40 === "" ? (this.case40 = null) : this.case40,
+          case41: this.case41 === "" ? (this.case41 = null) : this.case41,
+          case42: this.case42 === "" ? (this.case42 = null) : this.case42,
+          case43: this.case43 === "" ? (this.case43 = null) : this.case43,
+          case44: this.case44 === "" ? (this.case44 = null) : this.case44,
+          case45: this.case45 === "" ? (this.case45 = null) : this.case45,
+          case46: this.case46 === "" ? (this.case46 = null) : this.case46,
+          case47: this.case47 === "" ? (this.case47 = null) : this.case47,
+          case48: this.case48 === "" ? (this.case48 = null) : this.case48,
+          case50: this.case50 === "" ? (this.case50 = null) : this.case50,
+          case51: this.case51 === "" ? (this.case51 = null) : this.case51,
+          case52: this.case52 === "" ? (this.case52 = null) : this.case52,
+          case53: this.case53 === "" ? (this.case53 = null) : this.case53,
+          case54: this.case54 === "" ? (this.case54 = null) : this.case54,
+          case55: this.case55 === "" ? (this.case55 = null) : this.case55,
+          case56: this.case56 === "" ? (this.case56 = null) : this.case56,
+          case57: this.case57 === "" ? (this.case57 = null) : this.case57,
+          case58: this.case58 === "" ? (this.case58 = null) : this.case58,
+          case60: this.case60 === "" ? (this.case60 = null) : this.case60,
+          case61: this.case61 === "" ? (this.case61 = null) : this.case61,
+          case62: this.case62 === "" ? (this.case62 = null) : this.case62,
+          case63: this.case63 === "" ? (this.case63 = null) : this.case63,
+          case64: this.case64 === "" ? (this.case64 = null) : this.case64,
+          case65: this.case65 === "" ? (this.case65 = null) : this.case65,
+          case66: this.case66 === "" ? (this.case66 = null) : this.case66,
+          case67: this.case67 === "" ? (this.case67 = null) : this.case67,
+          case68: this.case68 === "" ? (this.case68 = null) : this.case68,
+          case70: this.case70 === "" ? (this.case70 = null) : this.case70,
+          case71: this.case71 === "" ? (this.case71 = null) : this.case71,
+          case72: this.case72 === "" ? (this.case72 = null) : this.case72,
+          case73: this.case73 === "" ? (this.case73 = null) : this.case73,
+          case74: this.case74 === "" ? (this.case74 = null) : this.case74,
+          case75: this.case75 === "" ? (this.case75 = null) : this.case75,
+          case76: this.case76 === "" ? (this.case76 = null) : this.case76,
+          case77: this.case77 === "" ? (this.case77 = null) : this.case77,
+          case78: this.case78 === "" ? (this.case78 = null) : this.case78,
+          case80: this.case80 === "" ? (this.case80 = null) : this.case80,
+          case81: this.case81 === "" ? (this.case81 = null) : this.case81,
+          case82: this.case82 === "" ? (this.case82 = null) : this.case82,
+          case83: this.case83 === "" ? (this.case83 = null) : this.case83,
+          case84: this.case84 === "" ? (this.case84 = null) : this.case84,
+          case85: this.case85 === "" ? (this.case85 = null) : this.case85,
+          case86: this.case86 === "" ? (this.case86 = null) : this.case86,
+          case87: this.case87 === "" ? (this.case87 = null) : this.case87,
+          case88: this.case88 === "" ? (this.case88 = null) : this.case88,
+        }).then((sudoku_data) => {
+          console.log(sudoku_data);
+          this.loadingSudoku = false;
           this.$router.push({
             name: "OneSudoku",
-            params: { slug: sudoku_data.slug }
+            params: { slug: sudoku_data.slug },
           });
         });
       } else {
-        alert("NOT GOOD");
+        this.loadingSudoku = false;
       }
-    }
+    },
   },
   created() {
     this.getSudoku();
     document.title = "Sudoku Solver";
-    console.log(this.sudokuExample);
-  }
+  },
 };
 </script>
 

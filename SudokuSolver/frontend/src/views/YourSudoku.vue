@@ -1,12 +1,16 @@
 <template>
   <div class="container">
-    <h1>Here will be your sudoku!</h1>
+    <h1>Your all solved sudoku are below!</h1>
+    <h2 class="sudoku-count">Number of solved sudoku: {{ sudokuCount }}</h2>
+    <h3>Click for details of each recrod!</h3>
+    <br />
+    <hr />
+
     <div v-for="sudoku in yourSudoku" :key="sudoku.id">
       <router-link :to="{ name: 'OneSudoku', params: { slug: sudoku.slug } }">
         {{ sudoku.slug }}
       </router-link>
-      <h4>{{ sudoku.created_at }}</h4>
-      <h4>{{ sudoku.author }}</h4>
+      <h4>Created at: {{ sudoku.created_at }}</h4>
       <hr />
     </div>
     <div>
@@ -31,7 +35,8 @@ export default {
     return {
       yourSudoku: [],
       next: null,
-      loadingSudokus: false
+      loadingSudokus: false,
+      sudokuCount: null,
     };
   },
   methods: {
@@ -40,22 +45,23 @@ export default {
       if (this.next) {
         endpoint = this.next;
       }
-      apiService(endpoint).then(data => {
+      apiService(endpoint).then((data) => {
         this.yourSudoku.push(...data.results);
         this.loadingSudokus = false;
+        this.sudokuCount = data.count;
         if (data.next) {
           this.next = data.next;
         } else {
           this.next = null;
         }
       });
-    }
+    },
   },
   created() {
     this.getSudoku();
     document.title = "Your Sudoku";
     console.log(this.yourSudoku);
-  }
+  },
 };
 </script>
 
@@ -68,5 +74,8 @@ div {
 }
 .container {
   min-height: calc(100vh - 114px - 58px);
+}
+.sudoku-count {
+  color: rgb(197, 53, 202);
 }
 </style>

@@ -13,9 +13,27 @@ class SudokuViewSet(viewsets.ModelViewSet):
     serializer_class = SudokuSerializer
     permission_classes = [IsAuthorOrReadOnly, IsAuthenticated]
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        # to view only request.user's records
+        author_queryset = []
+        for element in queryset:
+            if element.author == self.request.user:
+                author_queryset.append(element)
+
+        page = self.paginate_queryset(author_queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(author_queryset, many=True)
+        return Response(serializer.data)
+
     def perform_create(self, serializer):
         board = []
         line = []
+        print(self.request.data)
         for i in range(0, 9):
             for j in range(0, 9):
                 if self.request.data[f"case{i}{j}"] == None:
@@ -29,12 +47,12 @@ class SudokuViewSet(viewsets.ModelViewSet):
         start = time.time()
         results = sudoku_algorithm.solve(board)
         end = time.time()
-        value = end - start
+        algorithm_time = end - start
 
         serializer.save(
             author=self.request.user,
             solve_counter=results[1],
-            solve_time=value,
+            solve_time=algorithm_time,
             case00s=results[0][0][0],
             case01s=results[0][0][1],
             case02s=results[0][0][2],
