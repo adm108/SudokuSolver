@@ -33,7 +33,6 @@ class SudokuViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         board = []
         line = []
-        print(self.request.data)
         for i in range(0, 9):
             for j in range(0, 9):
                 if self.request.data[f"case{i}{j}"] == None:

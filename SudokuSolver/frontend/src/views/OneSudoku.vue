@@ -7,7 +7,7 @@
     <h5>Time of algorithm:</h5>
     <h5 class="statistics">{{ sudoku.solve_time }} [s]</h5>
     <table>
-      <h3 style="color: red">Sudoku before solve:</h3>
+      <h3 id="red-color">Sudoku before solve:</h3>
       <tbody>
         <tr>
           <td>{{ sudoku.case00 }}</td>
@@ -111,7 +111,7 @@
       </tbody>
     </table>
     <table>
-      <h3 style="color: green">Solved sudoku:</h3>
+      <h3 id="green-color">Solved sudoku:</h3>
       <tbody>
         <tr>
           <td>{{ sudoku.case00s }}</td>
@@ -214,6 +214,9 @@
         </tr>
       </tbody>
     </table>
+    <br />
+    <br />
+    <br />
   </div>
 </template>
 
@@ -224,12 +227,12 @@ export default {
   props: {
     slug: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      sudoku: {}
+      sudoku: {},
     };
   },
   methods: {
@@ -238,15 +241,19 @@ export default {
     },
     getSudokuData() {
       let endpoint = `/api/sudoku/${this.slug}/`;
-      apiService(endpoint).then(data => {
-        this.sudoku = data;
-        this.setPageTitle(data.slug);
+      apiService(endpoint).then((data) => {
+        if (data) {
+          this.sudoku = data;
+          this.setPageTitle(data.slug);
+        } else {
+          this.$router.push({ name: "PageNotFound" });
+        }
       });
-    }
+    },
   },
   created() {
     this.getSudokuData();
-  }
+  },
 };
 </script>
 
@@ -291,12 +298,17 @@ td:nth-of-type(3),
 td:nth-of-type(6) {
   border-right: 2px solid rgb(80, 78, 78);
 }
-h1,
 h3,
 h5 {
   text-align: center;
 }
 .statistics {
   color: rgb(197, 53, 202);
+}
+#red-color {
+  color: red;
+}
+#green-color {
+  color: green;
 }
 </style>  

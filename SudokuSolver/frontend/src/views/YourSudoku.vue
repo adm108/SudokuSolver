@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <h1>Your all solved sudoku are below!</h1>
-    <h2 class="sudoku-count">Number of solved sudoku: {{ sudokuCount }}</h2>
-    <h3>Click for details of each recrod!</h3>
+    <br />
+    <h3>
+      Your all solved sudoku are below! Click for solving details for each
+      record or delete it. :)
+    </h3>
+    <h3 class="sudoku-count">Number of solved sudoku: {{ sudokuCount }}</h3>
     <br />
     <hr />
 
@@ -11,6 +14,12 @@
         {{ sudoku.slug }}
       </router-link>
       <h4>Created at: {{ sudoku.created_at }}</h4>
+      <button
+        class="btn btn-sm btn-outline-danger"
+        @click="deleteSudoku(sudoku)"
+      >
+        DELETE
+      </button>
       <hr />
     </div>
     <div>
@@ -56,19 +65,30 @@ export default {
         }
       });
     },
+    setRequestUser() {
+      this.requestUser = window.localStorage.getItem("username");
+    },
+    async deleteSudoku(sudoku) {
+      let endpoint = `/api/sudoku/${sudoku.slug}/`;
+      let method = "DELETE";
+      try {
+        await apiService(endpoint, method);
+        this.$delete(this.yourSudoku, this.yourSudoku.indexOf(sudoku));
+        this.sudokuCount -= 1;
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
   created() {
     this.getSudoku();
+    this.setRequestUser();
     document.title = "Your Sudoku";
-    console.log(this.yourSudoku);
   },
 };
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
 div {
   text-align: center;
 }

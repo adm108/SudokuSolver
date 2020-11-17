@@ -1,7 +1,7 @@
 <template>
   <div>
     <br />
-    <h1>Here will be description of sudoku puzzle!</h1>
+    <h1>Solve your sudoku using backtracking algorithm !</h1>
     <br />
     <table id="myTable">
       <tbody>
@@ -1006,7 +1006,7 @@ export default {
             const valueExists = list.has(value);
             // if value exists in the list -> make red square
             if (valueExists) {
-              console.log("Error - double " + line + "-" + column);
+              // console.log("Error - double " + line + "-" + column);
               this.makeErrorSquare(line, column);
               this.firstError = "Wrong value in your sudoku!";
             } else {
@@ -1025,7 +1025,7 @@ export default {
             const valueExists = list.has(value);
             // if value exists in the list -> make red square
             if (valueExists) {
-              console.log("Error - double " + line + "-" + column);
+              // console.log("Error - double " + line + "-" + column);
               this.makeErrorSquare(line, column);
               this.firstError = "Wrong value in your sudoku!";
             } else {
@@ -1147,7 +1147,7 @@ export default {
             const valueExists = list.has(value);
             // if value exists in the list -> make red square
             if (valueExists) {
-              console.log("Error - double " + line + "-" + column);
+              // console.log("Error - double " + line + "-" + column);
               this.makeErrorSquare(line, column);
               this.firstError = "Wrong value in your sudoku!";
             } else {
@@ -1177,7 +1177,6 @@ export default {
       location.reload();
     },
     solveSudoku() {
-      console.log("first step");
       this.verify();
       if (this.firstError === null && this.secondError === null) {
         this.loadingSudoku = true;
@@ -1267,7 +1266,6 @@ export default {
           case87: this.case87 === "" ? (this.case87 = null) : this.case87,
           case88: this.case88 === "" ? (this.case88 = null) : this.case88,
         }).then((sudoku_data) => {
-          console.log(sudoku_data);
           this.loadingSudoku = false;
           this.$router.push({
             name: "OneSudoku",
