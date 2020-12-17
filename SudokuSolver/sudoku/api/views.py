@@ -48,6 +48,8 @@ class SudokuViewSet(viewsets.ModelViewSet):
         end = time.time()
         algorithm_time = end - start
 
+        sudoku_algorithm.solve.counter = 0
+
         serializer.save(
             author=self.request.user,
             solve_counter=results[1],
