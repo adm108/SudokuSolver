@@ -9,7 +9,7 @@ Aplikację stworzyłem ponieważ chciałem przećwiczyć frontendowy framework V
 
 ## FEATURES
 - Tworzenie konta (rejestracja) oraz logowanie do aplikacji
-- Sprawdzenie poprawności wprowadzonych liczb do tablicy
+- Sprawdzenie poprawności wprowadzonych liczb do tablicy sudoku
 - Rozwiązanie sudoku poprzez backtracking algorithm
 - Podejrzenie rozwiązanych tablic sudoku wraz ze statysytkami działania algorytmu (czas działania oraz liczba wywołań funkcji)
 - Usuwanie rozwiązanych sudoku
@@ -17,17 +17,17 @@ Aplikację stworzyłem ponieważ chciałem przećwiczyć frontendowy framework V
 ## TECHNOLOGIES AND LIBRARIES
 Main technologies:
 - Python 3.9.1
+- JavaScript
 - Django 3.0.8
 - Django Rest Framework 3.11.1
 - Vue.js 2.6.11
 - HTML 5
 - CSS 3
-- JavaScript
-- Bootstrap
+- Bootstrap 4.5.0
 
 Libraries for connecting frontend with backend:
 - django webpack_loader 0.7.0
-- webpack bundle tracker
+- webpack bundle tracker 0.4.3
 
 Libraries for creating registration and login forms:
 - django-crispy-forms 1.9.2
@@ -37,25 +37,43 @@ Libraries for user authentication:
 - django-registration 3.1
 - django-rest-auth 0.9.5
 
-Future features:
-- creating accounts,
-- solving sudoku puzzle,
-- archive with solved sudoku with its algorithm's time and number of function call
-
-
-- each sudoku has:
-    - an owner
-    - created_at field
-    - algorithm time
-    - number of function call
-    - sudoku with empty places -> before solving
-
-from django.contrib.auth import get_user_model
-custom_user = get_user_model()
-u = custom_user.objects.first()
-from sudoku.models import SudokuBeforeSolve
-s = SudokuBeforeSolve.objects.create(author=u, a1b1=5)
-
-admin-may7ap
-
-- webpack bundle trucker and django webpack loader for communicate backend and frontend with eachother
+## HOW TO INSTALL LOCALY?
+1. Create folder for app.
+2. Open your code editor inside that folder.
+3. Create virtual environment and activate it:
+```sh
+$ python -m venv venv (if you work on Windows system)
+```
+4. Clone repository:
+```sh
+$ git clone https://github.com/adm108/SudokuSolver.git
+```
+5. Go to SudokuSolver folder where requirements.txt file is and install all packages:
+```sh
+$ pip install -r requirements.txt
+```
+6. Use manage.py to enter following commands. Generate SQL commands:
+```sh
+$ python manage.py makemigrations
+```
+7. Execute SQL commands:
+```sh
+$ python manage.py migrate
+```
+8. Create superuser (enter email, username and password):
+```sh
+$ python manage.py createsuperuser
+```
+9. Go to frontend folder and install all frontend packages (you should have node.js engine installed):
+```sh
+$ npm install
+```
+10. Now you can open 2 terminal windows and run 2 local servers (frontend and backed). Inside frontend folder:
+```sh
+$ npm run serve
+```
+11. Inside SudokuSolver folder (where manage.py is):
+```sh
+$ python manage.py runserver
+```
+12. You can log in using superuser account or you can create the new one and then you can use backtracking algorithm to solve your sudoku !
