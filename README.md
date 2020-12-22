@@ -76,4 +76,39 @@ $ npm run serve
 ```sh
 $ python manage.py runserver
 ```
-12. You can log in using superuser account or you can create the new one and then you can use backtracking algorithm to solve your sudoku !
+12. You can log in using superuser account or you can create the new one and then you can use backtracking algorithm to solve your sudoku!
+
+## LICENCE
+It is a open source project. Anybody is free to use, study, modify and distribute this project for any purpose.
+
+## RESOURCES
+##### Great course about Django, Django REST Framework and Vue.js frameworks. It shows how to use all above mentioned technologies in one project [Michele Saba]:
+https://www.udemy.com/course/the-complete-guide-to-django-rest-framework-and-vue-js/
+
+##### Simple explanation how to write backtracking algorithm for solving sudoku board [Tech With Tim]:
+https://www.youtube.com/playlist?list=PLzMcBGfZo4-kE3aF6Y0wNBNih7hWRAU2o
+
+##### Cool concept for creating sudoku board in HTML and CSS also with checking the correctness of the entered values [Morgan Schmiedt]:
+https://www.youtube.com/watch?v=O-rR1iuzhmU&t=1257s&ab_channel=MorganSchmiedt
+
+## SOME SCREENS FROM THE APP
+<div align="center">Registration form</div>
+
+![alt text](screens/registration.jpg)
+
+<div align="center">Login form</div>
+
+![alt text](screens/login.jpg)
+
+<div align="center">Sudoku board with CLEAR, VERIFY and SOLVE buttons. Shot screen after clicking VERIFY button</div>
+
+![alt text](screens/board.jpg)
+
+
+<div align="center">Solved sudoku with statistics</div>
+
+![alt text](screens/solved.jpg)
+
+<div align="center">List of solved sudoku with DELETE and LOAD MORE buttons</div>
+
+![alt text](screens/list.jpg)
