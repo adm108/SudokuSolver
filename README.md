@@ -1,18 +1,17 @@
 # SudokuSolver 
 
 ## DESCRIPTION
-Czy wiesz co to jest backtracking algorithm? Jeśli nie to dobrze trafiłeś :). Stworzyłem prostą aplikację webową, która umożliwia rozwiązanie tablicy sudoku przy pomocy właśnie tego algorytmu. W skrócie: backtracking is a general algorithm for finding all (or some) solutions to some computational problems, notably constraint satisfaction problems, that incrementally builds candidates to the solutions, and abandons a candidate ("backtracks") as soon as it determines that the candidate cannot possibly be completed to a valid solution [wikipedia].
-Innym ciekawym zastosowaniem tego algorytmu jest tzw. eight queens puzzle problem, który polega na tym żeby umiejscowić na szachownicy 8 chess queens tak aby, żadna z nich nie mogła zbić jednym ruchem innej [wikipedia]
-W kontekście mojej aplikacji backtracking szuka pustego pola w tablicy sudoku, nadaje mu numer 1 i sprawdza czy tablica jest poprawna. Jeżeli nie, to nadaje mu kolejny numer (2) i sprawdza po raz kolejny aż do 9 numeru. Jeżeli algorytm znajdzie poprawny numer to przechodzi do kolejnego pustego pola, jeśli nie to cofa się o jedno pole i szuka kolejnego numeru dla poprzedniego pola. Brzmi trochę skomplikowanie, ale jest to stosunkowo prosty algorytm. Jego wadą jest bardzo duża ilość wywołań funkcji w przypadku bardzo trudnych sudoku. W aplikacji jest możliwość podejrzenia ilości wywołań funkcji dla każdego rozwiązania oraz czasu trwania algorytmu.
+Do you know what backtracking algorithm is? If not, you have come to the right place :). I created a simple web application that allows you to solve a sudoku table using this algorithm. In short: backtracking is a general algorithm for finding all (or some) solutions to some computational problems, notably constraint satisfaction problems, that incrementally builds candidates to the solutions, and abandons a candidate ("backtracks") as soon as it determines that the candidate cannot possibly be completed to a valid solution [[wikipedia]](https://en.wikipedia.org/wiki/Backtracking).
+Another interesting using of this algorithm is so-called the eight queens puzzle problem. The problem is to place 8 chess queens on the board so that none of them can capture another with one move [[wikipedia]](https://en.wikipedia.org/wiki/Eight_queens_puzzle). In the context of my application, backtracking looks for an empty field in the sudoku board, put on that place number 1 and checks if the all board is correct. If not, it put on the same place number 2 and checks again up to number 9. If the algorithm finds the correct number it goes to the next empty field, if not it goes back one field and looks for that field the next number. It sounds a little complicated, but it is a relatively simple algorithm. Its disadvantage is the large number of functions calls in the case of very difficult sudoku. The application allows to view the number of function calls for each solution and the duration of the algorithm.
 
-Aplikację stworzyłem ponieważ chciałem przećwiczyć frontendowy framework Vue.js w połączeniu z API w DRF oraz chciałem poprawić swoje skille w HTML i CSS a także JS. ;)
+I created this application because I wanted to practice Vue.js frontend framework in conjunction with Django Rest Framework and I wantend to improve my skils in HTML, CSS and JS ;).
 
 ## FEATURES
-- Tworzenie konta (rejestracja) oraz logowanie do aplikacji
-- Sprawdzenie poprawności wprowadzonych liczb do tablicy sudoku
-- Rozwiązanie sudoku poprzez backtracking algorithm
-- Podejrzenie rozwiązanych tablic sudoku wraz ze statysytkami działania algorytmu (czas działania oraz liczba wywołań funkcji)
-- Usuwanie rozwiązanych sudoku
+- Creating an account (registration) and login into the application
+- Validation the numbers entered into the sudoku board
+- Solving sudoku via backtracking algorithm
+- Algorithm operation statistics (operation time and number of backtracking function calls)
+- Removing solved sudoku
 
 ## TECHNOLOGIES AND LIBRARIES
 Main technologies:
@@ -64,7 +63,7 @@ $ python manage.py migrate
 ```sh
 $ python manage.py createsuperuser
 ```
-9. Go to frontend folder and install all frontend packages (you should have node.js engine installed):
+9. Go to frontend folder and install all frontend packages (you should have node.js engine installed on your system):
 ```sh
 $ npm install
 ```
@@ -82,14 +81,11 @@ $ python manage.py runserver
 It is a open source project. Anybody is free to use, study, modify and distribute this project for any purpose.
 
 ## RESOURCES
-##### Great course about Django, Django REST Framework and Vue.js frameworks. It shows how to use all above mentioned technologies in one project [Michele Saba]:
-https://www.udemy.com/course/the-complete-guide-to-django-rest-framework-and-vue-js/
+##### Great course about Django, Django REST Framework and Vue.js frameworks. It shows how to use all above mentioned technologies in one project [[Michele Saba]](https://www.udemy.com/course/the-complete-guide-to-django-rest-framework-and-vue-js/)
 
-##### Simple explanation how to write backtracking algorithm for solving sudoku board [Tech With Tim]:
-https://www.youtube.com/playlist?list=PLzMcBGfZo4-kE3aF6Y0wNBNih7hWRAU2o
+##### Simple explanation how to write backtracking algorithm for solving sudoku board [[Tech With Tim]](https://www.youtube.com/playlist?list=PLzMcBGfZo4-kE3aF6Y0wNBNih7hWRAU2o)
 
-##### Cool concept for creating sudoku board in HTML and CSS also with checking the correctness of the entered values [Morgan Schmiedt]:
-https://www.youtube.com/watch?v=O-rR1iuzhmU&t=1257s&ab_channel=MorganSchmiedt
+##### Cool concept for creating sudoku board in HTML and CSS also with checking the correctness of the entered values [[Morgan Schmiedt]](https://www.youtube.com/watch?v=O-rR1iuzhmU&t=1257s&ab_channel=MorganSchmiedt)
 
 ## SOME SCREENS FROM THE APP
 <div align="center">Registration form</div>
