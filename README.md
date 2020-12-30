@@ -95,20 +95,19 @@ https://www.youtube.com/watch?v=O-rR1iuzhmU&t=1257s&ab_channel=MorganSchmiedt
 <div align="center">Registration form</div>
 
 ![alt text](screens/registration.jpg)
-
+***
 <div align="center">Login form</div>
 
 ![alt text](screens/login.jpg)
-
+***
 <div align="center">Sudoku board with CLEAR, VERIFY and SOLVE buttons. Shot screen after clicking VERIFY button</div>
 
 ![alt text](screens/board.jpg)
-
-
+***
 <div align="center">Solved sudoku with statistics</div>
 
 ![alt text](screens/solved.jpg)
-
+***
 <div align="center">List of solved sudoku with DELETE and LOAD MORE buttons</div>
 
 ![alt text](screens/list.jpg)
